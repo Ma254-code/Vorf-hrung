@@ -3,143 +3,177 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Developer Bewerbung – Dein Name</title>
+<title>Mein Können – Showcase</title>
 <style>
-  @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Roboto&display=swap');
-
-  /* Reset */
-  * {
-    margin: 0; padding: 0; box-sizing: border-box;
-    font-family: 'Roboto', sans-serif;
-  }
-
   body {
-    min-height: 100vh;
-    background: linear-gradient(135deg, #141e30, #243b55);
-    color: #00fff7;
+    margin: 0;
+    background: #121212;
+    color: #00ffea;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 2rem;
+    flex-direction: column;
+    min-height: 100vh;
   }
 
-  .container {
-    max-width: 900px;
-    background: rgba(10, 30, 50, 0.85);
-    border-radius: 20px;
-    box-shadow:
-      0 0 30px #00fff7aa,
-      inset 0 0 50px #00fff7aa;
-    padding: 3rem 4rem;
+  header {
+    padding: 2rem 3rem;
+    border-bottom: 2px solid #00ffea;
     text-align: center;
   }
 
-  h1 {
-    font-family: 'Montserrat', sans-serif;
+  header h1 {
     font-size: 3.5rem;
-    font-weight: 700;
+    letter-spacing: 0.15em;
     margin-bottom: 0.5rem;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    color: #00fff7;
-    position: relative;
+    font-weight: 900;
   }
 
-  h1::after {
-    content: '';
-    display: block;
-    width: 100px;
-    height: 4px;
-    background: linear-gradient(90deg, #00fff7, #ff00ff);
-    margin: 0.5rem auto 2rem;
-    border-radius: 4px;
-    box-shadow: 0 0 10px #ff00ffaa;
+  header p {
+    font-size: 1.2rem;
+    color: #66fff5;
+    max-width: 700px;
+    margin: 0 auto;
+    user-select: none;
   }
 
-  p.lead {
-    font-size: 1.3rem;
-    margin-bottom: 2rem;
-    color: #a0f9f9;
-    max-width: 650px;
-    margin-left: auto;
-    margin-right: auto;
-    line-height: 1.6;
+  main {
+    flex-grow: 1;
+    padding: 2rem 3rem;
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
   }
 
+  /* Großer Showcase-Bereich */
+  .showcase {
+    background: #1e1e1e;
+    border: 2px solid #00ffea;
+    border-radius: 15px;
+    padding: 2rem;
+    min-height: 400px;
+    color: #00ffc8;
+    font-size: 1.15rem;
+    overflow-y: auto;
+    box-shadow: 0 0 15px #00ffea88;
+  }
+
+  /* Beispiel-Code-Block */
+  pre {
+    background: #0a0a0a;
+    padding: 1rem;
+    border-radius: 10px;
+    overflow-x: auto;
+    color: #00ffea;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 1rem;
+  }
+
+  /* Button für Projekte oder Skills */
   .btn {
-    background: linear-gradient(45deg, #00fff7, #ff00ff);
-    color: #111;
+    align-self: flex-start;
+    background: transparent;
+    border: 2px solid #00ffea;
+    color: #00ffea;
     font-weight: 700;
-    padding: 1rem 3rem;
-    font-size: 1.25rem;
+    padding: 0.75rem 2rem;
     border-radius: 50px;
     cursor: pointer;
-    border: none;
-    box-shadow: 0 0 20px #00fff7, 0 0 40px #ff00ff;
-    transition: all 0.3s ease;
+    transition: background 0.3s ease, color 0.3s ease;
+    user-select: none;
+    margin-bottom: 1rem;
   }
   .btn:hover {
-    background: linear-gradient(45deg, #ff00ff, #00fff7);
-    box-shadow: 0 0 30px #ff00ff, 0 0 50px #00fff7;
+    background: #00ffea;
+    color: #121212;
   }
 
-  /* Skills Section */
-  .skills {
-    margin-top: 3rem;
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-    gap: 1.5rem;
-  }
-
-  .skill {
-    background: #011827;
-    padding: 1rem 1.8rem;
-    border-radius: 12px;
-    box-shadow: 0 0 10px #00fff7bb;
-    font-weight: 600;
-    font-size: 1.1rem;
-    user-select: none;
-    transition: transform 0.3s ease;
-    cursor: default;
-  }
-  .skill:hover {
-    transform: scale(1.15);
-    box-shadow: 0 0 20px #ff00ffaa;
-  }
-
-  /* Footer */
-  footer {
-    margin-top: 4rem;
-    font-size: 0.85rem;
-    color: #00fff780;
+  /* Responsive */
+  @media (max-width: 700px) {
+    header h1 {
+      font-size: 2.5rem;
+    }
+    header p {
+      font-size: 1rem;
+      padding: 0 1rem;
+    }
+    main {
+      padding: 1rem 1.5rem;
+    }
+    .showcase {
+      min-height: 300px;
+      padding: 1rem;
+    }
   }
 </style>
 </head>
 <body>
 
-<div class="container">
-  <h1>Bewerbung als Developer</h1>
-  <p class="lead">
-    Ich bin ein leidenschaftlicher Softwareentwickler mit Fokus auf sauberen Code, moderne Technologien und kreative Lösungen.  
-    Hier zeige ich, dass ich nicht nur rede, sondern mein Können auch lebe – bereit, Projekte auf das nächste Level zu bringen.
-  </p>
+<header>
+  <h1>Mein Können</h1>
+  <p>Hier präsentiere ich meine Skills, Projekte und alles, was ich draufhabe. Schau dir an, was ich kann – live und in Farbe.</p>
+</header>
 
-  <button class="btn" onclick="window.open('Dein_Lebenslauf.pdf', '_blank')">Lebenslauf herunterladen</button>
+<main>
+  <button class="btn" onclick="showProject('project1')">Projekt 1: Interaktive Web-App</button>
+  <button class="btn" onclick="showProject('project2')">Projekt 2: Automatisierte Tools</button>
+  <button class="btn" onclick="showProject('project3')">Projekt 3: Kreative Grafiken</button>
 
-  <div class="skills" aria-label="Meine wichtigsten Skills">
-    <div class="skill">JavaScript</div>
-    <div class="skill">HTML5 & CSS3</div>
-    <div class="skill">React</div>
-    <div class="skill">Node.js</div>
-    <div class="skill">Python</div>
-    <div class="skill">Git & GitHub</div>
-    <div class="skill">SQL & Datenbanken</div>
-    <div class="skill">REST APIs</div>
-  </div>
+  <section class="showcase" id="showcase">
+    <p>Wähle ein Projekt aus, um mehr zu sehen.</p>
+  </section>
+</main>
 
-  <footer>© 2025 Dein Name – Developer Bewerbung</footer>
-</div>
+<script>
+  const projects = {
+    project1: `
+      <h2>Interaktive Web-App</h2>
+      <p>Eine responsive Webanwendung, die moderne Techniken wie React und Node.js nutzt. Perfekt für dynamische Benutzererlebnisse.</p>
+      <pre>
+// Beispiel React-Komponente:
+function HelloWorld() {
+  return <h1>Hallo Welt!</h1>;
+}
+      </pre>
+    `,
+    project2: `
+      <h2>Automatisierte Tools</h2>
+      <p>Python-Skripte, die wiederkehrende Aufgaben automatisieren und Daten effizient verarbeiten.</p>
+      <pre>
+# Beispiel Python-Code:
+def automate_task():
+    print("Automatisierung läuft!")
+      </pre>
+    `,
+    project3: `
+      <h2>Kreative Grafiken</h2>
+      <p>Grafiken und Animationen mit Canvas und SVG für beeindruckende visuelle Effekte.</p>
+      <canvas id="canvas" width="400" height="200" style="background:#111; display:block; margin:1rem auto;"></canvas>
+      <script>
+        const canvas = document.getElementById('canvas');
+        const ctx = canvas.getContext('2d');
+        let x = 0;
+        function animate() {
+          ctx.clearRect(0, 0, canvas.width, canvas.height);
+          ctx.fillStyle = '#00ffea';
+          ctx.beginPath();
+          ctx.arc(x, 100, 30, 0, Math.PI * 2);
+          ctx.fill();
+          x += 2;
+          if (x > canvas.width + 30) x = -30;
+          requestAnimationFrame(animate);
+        }
+        animate();
+      </script>
+    `
+  };
+
+  function showProject(id) {
+    const container = document.getElementById('showcase');
+    container.innerHTML = projects[id];
+  }
+</script>
 
 </body>
 </html>
