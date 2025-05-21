@@ -3,11 +3,10 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Flex Vorführmodel</title>
+<title>Vorführmodel</title>
 <style>
   @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;700&display=swap');
 
-  /* Reset */
   * {
     margin: 0; padding: 0; box-sizing: border-box;
   }
@@ -21,7 +20,6 @@
     color: #fff;
   }
   
-  /* Particle Canvas */
   #particles-js {
     position: fixed;
     width: 100%;
@@ -29,7 +27,6 @@
     z-index: 0;
   }
   
-  /* Main Content */
   .container {
     position: relative;
     z-index: 10;
@@ -75,7 +72,6 @@
     text-shadow: 0 0 5px rgba(255,255,255,0.2);
   }
 
-  /* Flex Cards */
   .cards {
     display: flex;
     gap: 2rem;
@@ -126,7 +122,6 @@
     color: #eee;
   }
 
-  /* Glowing Button */
   .glow-button {
     margin-top: 4rem;
     padding: 1rem 3rem;
@@ -154,7 +149,6 @@
       0 0 80px #ff0047;
   }
 
-  /* Footer */
   footer {
     position: fixed;
     bottom: 15px;
@@ -172,13 +166,13 @@
 <div id="particles-js"></div>
 
 <div class="container">
-  <h1>FLEX MODE ON</h1>
+  <h1>LEVEL UP</h1>
   <p class="subtitle">Nur für die, die richtig was draufhaben 🔥</p>
 
   <div class="cards">
     <div class="card">
       <h2>🔥 Skills</h2>
-      <p>Webentwicklung, Grafikdesign, DJing, Influencer, CEO-Level Flex</p>
+      <p>Webentwicklung, Grafikdesign, DJing, Influencer, CEO-Level</p>
     </div>
     <div class="card">
       <h2>🏆 Erfolge</h2>
@@ -190,15 +184,13 @@
     </div>
   </div>
 
-  <button class="glow-button" onclick="alert('Flex it!')">Mehr Flexen</button>
+  <button class="glow-button" onclick="alert('Zeig’s ihnen!')">Mehr anzeigen</button>
 </div>
 
-<footer>© 2025 Flex Vorführmodel. Powered by pure Swagger.</footer>
+<footer>© 2025 Vorführmodel. Powered by pure Swagger.</footer>
 
-<!-- Particles.js library -->
 <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
 <script>
-  /* ParticleJS Config */
   particlesJS('particles-js', {
     particles: {
       number: { value: 70, density: { enable: true, value_area: 900 } },
