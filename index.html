@@ -1,260 +1,145 @@
 <!DOCTYPE html>
 <html lang="de">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Meisterwerk in Code</title>
-  <style>
-    /* Reset */
-    * {
-      margin: 0; padding: 0; box-sizing: border-box;
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    }
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Developer Bewerbung – Dein Name</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Roboto&display=swap');
 
-    body, html {
-      height: 100%;
-      background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
-      overflow: hidden;
-      color: #00fff7;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      flex-direction: column;
-      text-align: center;
-      user-select: none;
-      padding: 0 1rem;
-    }
+  /* Reset */
+  * {
+    margin: 0; padding: 0; box-sizing: border-box;
+    font-family: 'Roboto', sans-serif;
+  }
 
-    /* Partikel Hintergrund */
-    #particles {
-      position: fixed;
-      width: 100%;
-      height: 100%;
-      top: 0; left: 0;
-      z-index: -1;
-    }
+  body {
+    min-height: 100vh;
+    background: linear-gradient(135deg, #141e30, #243b55);
+    color: #00fff7;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 2rem;
+  }
 
-    /* Glitch Text */
-    h1 {
-      font-size: 5rem;
-      position: relative;
-      color: #00fff7;
-      animation: flicker 3s infinite alternate;
-      text-transform: uppercase;
-      letter-spacing: 0.15em;
-      font-weight: 900;
-      max-width: 100vw;
-      user-select: text;
-    }
-    h1::before,
-    h1::after {
-      content: "MEISTERWERK IN CODE";
-      position: absolute;
-      left: 0;
-      right: 0;
-      opacity: 0.8;
-      clip-path: var(--clip);
-      user-select: none;
-    }
-    h1::before {
-      animation: glitchTop 2s infinite linear;
-      color: #ff005c;
-      z-index: -1;
-      --clip: inset(0 0 70% 0);
-    }
-    h1::after {
-      animation: glitchBot 2s infinite linear;
-      color: #00ffe7;
-      z-index: -1;
-      --clip: inset(70% 0 0 0);
-    }
+  .container {
+    max-width: 900px;
+    background: rgba(10, 30, 50, 0.85);
+    border-radius: 20px;
+    box-shadow:
+      0 0 30px #00fff7aa,
+      inset 0 0 50px #00fff7aa;
+    padding: 3rem 4rem;
+    text-align: center;
+  }
 
-    /* Button */
-    .btn {
-      margin-top: 2rem;
-      padding: 1.25rem 3rem;
-      font-size: 1.5rem;
-      font-weight: 700;
-      color: #0ff;
-      background: linear-gradient(45deg, #0ff, #0af);
-      border: none;
-      border-radius: 15px;
-      box-shadow:
-        0 0 10px #0ff,
-        0 0 40px #0ff,
-        0 0 80px #00f;
-      cursor: pointer;
-      transition: all 0.3s ease;
-      perspective: 800px;
-      user-select: none;
-    }
-    .btn:hover {
-      background: linear-gradient(45deg, #ff00ff, #ff0066);
-      box-shadow:
-        0 0 15px #ff00ff,
-        0 0 50px #ff00ff,
-        0 0 100px #f0f;
-      transform: translateZ(20px) scale(1.05) rotateY(10deg);
-    }
-    .btn:active {
-      transform: translateZ(5px) scale(0.95) rotateY(0deg);
-      box-shadow:
-        0 0 5px #ff00ff;
-    }
+  h1 {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 3.5rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: #00fff7;
+    position: relative;
+  }
 
-    /* Subtitle */
-    p {
-      margin-top: 1rem;
-      font-size: 1.25rem;
-      color: #aaa;
-      letter-spacing: 0.1em;
-      font-style: italic;
-      max-width: 600px;
-      user-select: text;
-    }
+  h1::after {
+    content: '';
+    display: block;
+    width: 100px;
+    height: 4px;
+    background: linear-gradient(90deg, #00fff7, #ff00ff);
+    margin: 0.5rem auto 2rem;
+    border-radius: 4px;
+    box-shadow: 0 0 10px #ff00ffaa;
+  }
 
-    /* Animations */
-    @keyframes flicker {
-      0%, 100% { opacity: 1; }
-      10%, 30%, 50%, 70%, 90% { opacity: 0.8; }
-      20%, 40%, 60%, 80% { opacity: 0.9; }
-    }
+  p.lead {
+    font-size: 1.3rem;
+    margin-bottom: 2rem;
+    color: #a0f9f9;
+    max-width: 650px;
+    margin-left: auto;
+    margin-right: auto;
+    line-height: 1.6;
+  }
 
-    @keyframes glitchTop {
-      0% {
-        clip-path: inset(0 0 70% 0);
-        transform: translate(0);
-      }
-      20% {
-        clip-path: inset(0 0 55% 0);
-        transform: translate(-5px, -2px);
-      }
-      40% {
-        clip-path: inset(0 0 70% 0);
-        transform: translate(5px, 2px);
-      }
-      60% {
-        clip-path: inset(0 0 55% 0);
-        transform: translate(-5px, 0);
-      }
-      80% {
-        clip-path: inset(0 0 70% 0);
-        transform: translate(0);
-      }
-      100% {
-        clip-path: inset(0 0 70% 0);
-        transform: translate(0);
-      }
-    }
+  .btn {
+    background: linear-gradient(45deg, #00fff7, #ff00ff);
+    color: #111;
+    font-weight: 700;
+    padding: 1rem 3rem;
+    font-size: 1.25rem;
+    border-radius: 50px;
+    cursor: pointer;
+    border: none;
+    box-shadow: 0 0 20px #00fff7, 0 0 40px #ff00ff;
+    transition: all 0.3s ease;
+  }
+  .btn:hover {
+    background: linear-gradient(45deg, #ff00ff, #00fff7);
+    box-shadow: 0 0 30px #ff00ff, 0 0 50px #00fff7;
+  }
 
-    @keyframes glitchBot {
-      0% {
-        clip-path: inset(70% 0 0 0);
-        transform: translate(0);
-      }
-      20% {
-        clip-path: inset(55% 0 0 0);
-        transform: translate(5px, 2px);
-      }
-      40% {
-        clip-path: inset(70% 0 0 0);
-        transform: translate(-5px, -2px);
-      }
-      60% {
-        clip-path: inset(55% 0 0 0);
-        transform: translate(5px, 0);
-      }
-      80% {
-        clip-path: inset(70% 0 0 0);
-        transform: translate(0);
-      }
-      100% {
-        clip-path: inset(70% 0 0 0);
-        transform: translate(0);
-      }
-    }
-  </style>
+  /* Skills Section */
+  .skills {
+    margin-top: 3rem;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+  }
+
+  .skill {
+    background: #011827;
+    padding: 1rem 1.8rem;
+    border-radius: 12px;
+    box-shadow: 0 0 10px #00fff7bb;
+    font-weight: 600;
+    font-size: 1.1rem;
+    user-select: none;
+    transition: transform 0.3s ease;
+    cursor: default;
+  }
+  .skill:hover {
+    transform: scale(1.15);
+    box-shadow: 0 0 20px #ff00ffaa;
+  }
+
+  /* Footer */
+  footer {
+    margin-top: 4rem;
+    font-size: 0.85rem;
+    color: #00fff780;
+  }
+</style>
 </head>
 <body>
 
-  <canvas id="particles"></canvas>
+<div class="container">
+  <h1>Bewerbung als Developer</h1>
+  <p class="lead">
+    Ich bin ein leidenschaftlicher Softwareentwickler mit Fokus auf sauberen Code, moderne Technologien und kreative Lösungen.  
+    Hier zeige ich, dass ich nicht nur rede, sondern mein Können auch lebe – bereit, Projekte auf das nächste Level zu bringen.
+  </p>
 
-  <h1>Meisterwerk in Code</h1>
-  <p>Keine leeren Worte. Nur reine Skills, klare Linien und pure Technik.  
-     Hier zählt nur eines: Qualität, die überzeugt.</p>
-  <button class="btn" onclick="alert('Du zeigst, was du kannst – und das mit Stil!')">Zeig dein Können</button>
+  <button class="btn" onclick="window.open('Dein_Lebenslauf.pdf', '_blank')">Lebenslauf herunterladen</button>
 
-  <script>
-    // Partikel-Animation im Hintergrund
-    const canvas = document.getElementById('particles');
-    const ctx = canvas.getContext('2d');
-    let width, height;
-    let particlesArray;
+  <div class="skills" aria-label="Meine wichtigsten Skills">
+    <div class="skill">JavaScript</div>
+    <div class="skill">HTML5 & CSS3</div>
+    <div class="skill">React</div>
+    <div class="skill">Node.js</div>
+    <div class="skill">Python</div>
+    <div class="skill">Git & GitHub</div>
+    <div class="skill">SQL & Datenbanken</div>
+    <div class="skill">REST APIs</div>
+  </div>
 
-    function init() {
-      resize();
-      particlesArray = [];
-      for (let i = 0; i < 120; i++) {
-        particlesArray.push(new Particle());
-      }
-      animate();
-    }
-
-    function resize() {
-      width = window.innerWidth;
-      height = window.innerHeight;
-      canvas.width = width;
-      canvas.height = height;
-    }
-
-    window.addEventListener('resize', () => {
-      resize();
-      particlesArray = [];
-      for (let i = 0; i < 120; i++) {
-        particlesArray.push(new Particle());
-      }
-    });
-
-    class Particle {
-      constructor() {
-        this.x = Math.random() * width;
-        this.y = Math.random() * height;
-        this.size = Math.random() * 2 + 1;
-        this.speedX = (Math.random() - 0.5) * 0.5;
-        this.speedY = (Math.random() - 0.5) * 0.5;
-        this.color = `rgba(0,255,255,${Math.random()})`;
-      }
-      update() {
-        this.x += this.speedX;
-        this.y += this.speedY;
-
-        if (this.x > width) this.x = 0;
-        else if (this.x < 0) this.x = width;
-
-        if (this.y > height) this.y = 0;
-        else if (this.y < 0) this.y = height;
-      }
-      draw() {
-        ctx.beginPath();
-        ctx.fillStyle = this.color;
-        ctx.shadowColor = '#0ff';
-        ctx.shadowBlur = 10;
-        ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
-        ctx.fill();
-      }
-    }
-
-    function animate() {
-      ctx.clearRect(0, 0, width, height);
-      particlesArray.forEach(p => {
-        p.update();
-        p.draw();
-      });
-      requestAnimationFrame(animate);
-    }
-
-    init();
-  </script>
+  <footer>© 2025 Dein Name – Developer Bewerbung</footer>
+</div>
 
 </body>
 </html>
