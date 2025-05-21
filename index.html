@@ -1,179 +1,253 @@
 <!DOCTYPE html>
 <html lang="de">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Mein Können – Showcase</title>
-<style>
-  body {
-    margin: 0;
-    background: #121212;
-    color: #00ffea;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh;
-  }
-
-  header {
-    padding: 2rem 3rem;
-    border-bottom: 2px solid #00ffea;
-    text-align: center;
-  }
-
-  header h1 {
-    font-size: 3.5rem;
-    letter-spacing: 0.15em;
-    margin-bottom: 0.5rem;
-    font-weight: 900;
-  }
-
-  header p {
-    font-size: 1.2rem;
-    color: #66fff5;
-    max-width: 700px;
-    margin: 0 auto;
-    user-select: none;
-  }
-
-  main {
-    flex-grow: 1;
-    padding: 2rem 3rem;
-    max-width: 1200px;
-    margin: 0 auto;
-    display: flex;
-    flex-direction: column;
-    gap: 2rem;
-  }
-
-  /* Großer Showcase-Bereich */
-  .showcase {
-    background: #1e1e1e;
-    border: 2px solid #00ffea;
-    border-radius: 15px;
-    padding: 2rem;
-    min-height: 400px;
-    color: #00ffc8;
-    font-size: 1.15rem;
-    overflow-y: auto;
-    box-shadow: 0 0 15px #00ffea88;
-  }
-
-  /* Beispiel-Code-Block */
-  pre {
-    background: #0a0a0a;
-    padding: 1rem;
-    border-radius: 10px;
-    overflow-x: auto;
-    color: #00ffea;
-    font-family: 'Courier New', Courier, monospace;
-    font-size: 1rem;
-  }
-
-  /* Button für Projekte oder Skills */
-  .btn {
-    align-self: flex-start;
-    background: transparent;
-    border: 2px solid #00ffea;
-    color: #00ffea;
-    font-weight: 700;
-    padding: 0.75rem 2rem;
-    border-radius: 50px;
-    cursor: pointer;
-    transition: background 0.3s ease, color 0.3s ease;
-    user-select: none;
-    margin-bottom: 1rem;
-  }
-  .btn:hover {
-    background: #00ffea;
-    color: #121212;
-  }
-
-  /* Responsive */
-  @media (max-width: 700px) {
-    header h1 {
-      font-size: 2.5rem;
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Heftig und Schön</title>
+  <style>
+    /* Reset */
+    * {
+      margin: 0; padding: 0; box-sizing: border-box;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     }
-    header p {
-      font-size: 1rem;
-      padding: 0 1rem;
+
+    body, html {
+      height: 100%;
+      background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+      overflow: hidden;
+      color: #00fff7;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      text-align: center;
+      user-select: none;
     }
-    main {
-      padding: 1rem 1.5rem;
+
+    /* Partikel Hintergrund */
+    #particles {
+      position: fixed;
+      width: 100%;
+      height: 100%;
+      top: 0; left: 0;
+      z-index: -1;
     }
-    .showcase {
-      min-height: 300px;
-      padding: 1rem;
+
+    /* Glitch Text */
+    h1 {
+      font-size: 5rem;
+      position: relative;
+      color: #00fff7;
+      animation: flicker 3s infinite alternate;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      font-weight: 900;
     }
-  }
-</style>
+    h1::before,
+    h1::after {
+      content: "HEFTIG & SCHÖN";
+      position: absolute;
+      left: 0;
+      right: 0;
+      opacity: 0.8;
+      clip-path: var(--clip);
+    }
+    h1::before {
+      animation: glitchTop 2s infinite linear;
+      color: #ff005c;
+      z-index: -1;
+      --clip: inset(0 0 70% 0);
+    }
+    h1::after {
+      animation: glitchBot 2s infinite linear;
+      color: #00ffe7;
+      z-index: -1;
+      --clip: inset(70% 0 0 0);
+    }
+
+    /* Button */
+    .btn {
+      margin-top: 2rem;
+      padding: 1.25rem 3rem;
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: #0ff;
+      background: linear-gradient(45deg, #0ff, #0af);
+      border: none;
+      border-radius: 15px;
+      box-shadow:
+        0 0 10px #0ff,
+        0 0 40px #0ff,
+        0 0 80px #00f;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      perspective: 800px;
+    }
+    .btn:hover {
+      background: linear-gradient(45deg, #ff00ff, #ff0066);
+      box-shadow:
+        0 0 15px #ff00ff,
+        0 0 50px #ff00ff,
+        0 0 100px #f0f;
+      transform: translateZ(20px) scale(1.05) rotateY(10deg);
+    }
+    .btn:active {
+      transform: translateZ(5px) scale(0.95) rotateY(0deg);
+      box-shadow:
+        0 0 5px #ff00ff;
+    }
+
+    /* Subtitle */
+    p {
+      margin-top: 1rem;
+      font-size: 1.25rem;
+      color: #aaa;
+      letter-spacing: 0.1em;
+      font-style: italic;
+      max-width: 600px;
+    }
+
+    /* Animations */
+    @keyframes flicker {
+      0%, 100% { opacity: 1; }
+      10%, 30%, 50%, 70%, 90% { opacity: 0.8; }
+      20%, 40%, 60%, 80% { opacity: 0.9; }
+    }
+
+    @keyframes glitchTop {
+      0% {
+        clip-path: inset(0 0 70% 0);
+        transform: translate(0);
+      }
+      20% {
+        clip-path: inset(0 0 55% 0);
+        transform: translate(-5px, -2px);
+      }
+      40% {
+        clip-path: inset(0 0 70% 0);
+        transform: translate(5px, 2px);
+      }
+      60% {
+        clip-path: inset(0 0 55% 0);
+        transform: translate(-5px, 0);
+      }
+      80% {
+        clip-path: inset(0 0 70% 0);
+        transform: translate(0);
+      }
+      100% {
+        clip-path: inset(0 0 70% 0);
+        transform: translate(0);
+      }
+    }
+
+    @keyframes glitchBot {
+      0% {
+        clip-path: inset(70% 0 0 0);
+        transform: translate(0);
+      }
+      20% {
+        clip-path: inset(55% 0 0 0);
+        transform: translate(5px, 2px);
+      }
+      40% {
+        clip-path: inset(70% 0 0 0);
+        transform: translate(-5px, -2px);
+      }
+      60% {
+        clip-path: inset(55% 0 0 0);
+        transform: translate(5px, 0);
+      }
+      80% {
+        clip-path: inset(70% 0 0 0);
+        transform: translate(0);
+      }
+      100% {
+        clip-path: inset(70% 0 0 0);
+        transform: translate(0);
+      }
+    }
+  </style>
 </head>
 <body>
 
-<header>
-  <h1>Mein Können</h1>
-  <p>Hier präsentiere ich meine Skills, Projekte und alles, was ich draufhabe. Schau dir an, was ich kann – live und in Farbe.</p>
-</header>
+  <canvas id="particles"></canvas>
 
-<main>
-  <button class="btn" onclick="showProject('project1')">Projekt 1: Interaktive Web-App</button>
-  <button class="btn" onclick="showProject('project2')">Projekt 2: Automatisierte Tools</button>
-  <button class="btn" onclick="showProject('project3')">Projekt 3: Kreative Grafiken</button>
+  <h1>Heftig & Schön</h1>
+  <p>Diese Webseite zeigt, wie man richtig angeben kann – mit Style, Power und ein bisschen Glitch!</p>
+  <button class="btn" onclick="alert('Du hast richtig gut angegeben!')">Jetzt Angeben</button>
 
-  <section class="showcase" id="showcase">
-    <p>Wähle ein Projekt aus, um mehr zu sehen.</p>
-  </section>
-</main>
+  <script>
+    // Partikel-Animation im Hintergrund
+    const canvas = document.getElementById('particles');
+    const ctx = canvas.getContext('2d');
+    let width, height;
+    let particlesArray;
 
-<script>
-  const projects = {
-    project1: `
-      <h2>Interaktive Web-App</h2>
-      <p>Eine responsive Webanwendung, die moderne Techniken wie React und Node.js nutzt. Perfekt für dynamische Benutzererlebnisse.</p>
-      <pre>
-// Beispiel React-Komponente:
-function HelloWorld() {
-  return <h1>Hallo Welt!</h1>;
-}
-      </pre>
-    `,
-    project2: `
-      <h2>Automatisierte Tools</h2>
-      <p>Python-Skripte, die wiederkehrende Aufgaben automatisieren und Daten effizient verarbeiten.</p>
-      <pre>
-# Beispiel Python-Code:
-def automate_task():
-    print("Automatisierung läuft!")
-      </pre>
-    `,
-    project3: `
-      <h2>Kreative Grafiken</h2>
-      <p>Grafiken und Animationen mit Canvas und SVG für beeindruckende visuelle Effekte.</p>
-      <canvas id="canvas" width="400" height="200" style="background:#111; display:block; margin:1rem auto;"></canvas>
-      <script>
-        const canvas = document.getElementById('canvas');
-        const ctx = canvas.getContext('2d');
-        let x = 0;
-        function animate() {
-          ctx.clearRect(0, 0, canvas.width, canvas.height);
-          ctx.fillStyle = '#00ffea';
-          ctx.beginPath();
-          ctx.arc(x, 100, 30, 0, Math.PI * 2);
-          ctx.fill();
-          x += 2;
-          if (x > canvas.width + 30) x = -30;
-          requestAnimationFrame(animate);
-        }
-        animate();
-      </script>
-    `
-  };
+    function init() {
+      resize();
+      particlesArray = [];
+      for (let i = 0; i < 120; i++) {
+        particlesArray.push(new Particle());
+      }
+      animate();
+    }
 
-  function showProject(id) {
-    const container = document.getElementById('showcase');
-    container.innerHTML = projects[id];
-  }
-</script>
+    function resize() {
+      width = window.innerWidth;
+      height = window.innerHeight;
+      canvas.width = width;
+      canvas.height = height;
+    }
+
+    window.addEventListener('resize', () => {
+      resize();
+      particlesArray = [];
+      for (let i = 0; i < 120; i++) {
+        particlesArray.push(new Particle());
+      }
+    });
+
+    class Particle {
+      constructor() {
+        this.x = Math.random() * width;
+        this.y = Math.random() * height;
+        this.size = Math.random() * 2 + 1;
+        this.speedX = (Math.random() - 0.5) * 0.5;
+        this.speedY = (Math.random() - 0.5) * 0.5;
+        this.color = `rgba(0,255,255,${Math.random()})`;
+      }
+      update() {
+        this.x += this.speedX;
+        this.y += this.speedY;
+
+        if (this.x > width) this.x = 0;
+        else if (this.x < 0) this.x = width;
+
+        if (this.y > height) this.y = 0;
+        else if (this.y < 0) this.y = height;
+      }
+      draw() {
+        ctx.beginPath();
+        ctx.fillStyle = this.color;
+        ctx.shadowColor = '#0ff';
+        ctx.shadowBlur = 10;
+        ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+        ctx.fill();
+      }
+    }
+
+    function animate() {
+      ctx.clearRect(0, 0, width, height);
+      particlesArray.forEach(p => {
+        p.update();
+        p.draw();
+      });
+      requestAnimationFrame(animate);
+    }
+
+    init();
+  </script>
 
 </body>
 </html>
