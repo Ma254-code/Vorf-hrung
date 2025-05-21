@@ -4,250 +4,7 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Vorführmodel - Developer Bewerbung</title>
-<style>
-  @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;700&display=swap');
-
-  * {
-    margin: 0; padding: 0; box-sizing: border-box;
-  }
-  
-  body, html {
-    height: 100%;
-    font-family: 'Poppins', sans-serif;
-    background: #0f0c29;
-    background: linear-gradient(135deg, #0f0c29 0%, #302b63 50%, #24243e 100%);
-    overflow-x: hidden;
-    color: #fff;
-  }
-  
-  .container {
-    position: relative;
-    z-index: 10;
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    padding: 2rem;
-    text-align: center;
-  }
-  
-  h1 {
-    font-size: 5rem;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 0.15em;
-    background: linear-gradient(90deg, #ff0047, #2c34c7, #ff0047);
-    background-size: 200% 200%;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    animation: gradientShift 4s ease infinite;
-    margin-bottom: 0.5rem;
-    text-shadow:
-      0 0 5px #ff0047,
-      0 0 10px #ff0047,
-      0 0 20px #ff0047,
-      0 0 40px #2c34c7;
-  }
-
-  @keyframes gradientShift {
-    0%{background-position:0% 50%;}
-    50%{background-position:100% 50%;}
-    100%{background-position:0% 50%;}
-  }
-
-  p.subtitle {
-    font-size: 1.8rem;
-    font-weight: 300;
-    margin-bottom: 4rem;
-    letter-spacing: 0.1em;
-    color: #ddd;
-    text-shadow: 0 0 5px rgba(255,255,255,0.2);
-  }
-
-  .cards {
-    display: flex;
-    gap: 2rem;
-    flex-wrap: wrap;
-    justify-content: center;
-    max-width: 960px;
-    width: 100%;
-  }
-
-  .card {
-    background: rgba(255, 255, 255, 0.07);
-    border-radius: 20px;
-    padding: 2.5rem 2rem;
-    flex: 1 1 280px;
-    box-shadow:
-      0 0 10px rgba(255, 0, 71, 0.5),
-      0 0 30px rgba(44, 52, 199, 0.6);
-    border: 2px solid transparent;
-    cursor: default;
-    transition: 
-      transform 0.35s ease,
-      border-color 0.35s ease,
-      box-shadow 0.35s ease;
-  }
-
-  .card:hover {
-    transform: scale(1.08);
-    border-color: #ff0047;
-    box-shadow:
-      0 0 15px #ff0047,
-      0 0 40px #2c34c7,
-      0 0 60px #ff0047;
-  }
-
-  .card h2 {
-    font-weight: 700;
-    font-size: 2rem;
-    margin-bottom: 1rem;
-    background: linear-gradient(45deg, #ff0047, #2c34c7);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-  }
-
-  .card p {
-    font-weight: 300;
-    font-size: 1.1rem;
-    line-height: 1.5;
-    color: #eee;
-  }
-
-  .glow-button {
-    margin-top: 4rem;
-    padding: 1rem 3rem;
-    font-size: 1.4rem;
-    font-weight: 700;
-    text-transform: uppercase;
-    color: #fff;
-    background: #ff0047;
-    border: none;
-    border-radius: 50px;
-    cursor: pointer;
-    box-shadow:
-      0 0 10px #ff0047,
-      0 0 20px #ff0047,
-      0 0 30px #ff0047;
-    transition: box-shadow 0.3s ease;
-    user-select: none;
-  }
-
-  .glow-button:hover {
-    box-shadow:
-      0 0 20px #ff0047,
-      0 0 40px #ff0047,
-      0 0 60px #ff0047,
-      0 0 80px #ff0047;
-  }
-
-  footer {
-    position: fixed;
-    bottom: 15px;
-    width: 100%;
-    text-align: center;
-    font-size: 0.9rem;
-    color: #888;
-    z-index: 10;
-    user-select: none;
-  }
-
-  /* Modal Styles */
-  .modal-overlay {
-    position: fixed;
-    top: 0; left: 0;
-    width: 100vw; height: 100vh;
-    background: rgba(0,0,0,0.85);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    backdrop-filter: blur(6px);
-    opacity: 0;
-    pointer-events: none;
-    transition: opacity 0.3s ease;
-    z-index: 9999;
-  }
-
-  .modal-overlay.active {
-    opacity: 1;
-    pointer-events: auto;
-  }
-
-  .modal {
-    background: #12102a;
-    border-radius: 20px;
-    max-width: 600px;
-    width: 90%;
-    padding: 2.5rem 3rem;
-    box-shadow:
-      0 0 20px #ff0047,
-      0 0 40px #2c34c7;
-    color: #eee;
-    max-height: 80vh;
-    overflow-y: auto;
-    position: relative;
-  }
-
-  .modal h2 {
-    font-size: 2.8rem;
-    font-weight: 700;
-    margin-bottom: 1rem;
-    background: linear-gradient(45deg, #ff0047, #2c34c7);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    text-align: center;
-  }
-
-  .modal p {
-    font-size: 1.1rem;
-    line-height: 1.6;
-    margin-bottom: 1.25rem;
-  }
-
-  .modal h3 {
-    margin-top: 1.5rem;
-    margin-bottom: 0.75rem;
-    font-weight: 700;
-    font-size: 1.5rem;
-    color: #ff0047;
-  }
-
-  .modal ul {
-    list-style-type: disc;
-    margin-left: 1.25rem;
-    margin-bottom: 1rem;
-    color: #ddd;
-  }
-
-  .close-btn {
-    position: absolute;
-    top: 15px;
-    right: 20px;
-    font-size: 2rem;
-    font-weight: 700;
-    color: #ff0047;
-    cursor: pointer;
-    user-select: none;
-    transition: color 0.2s ease;
-  }
-
-  .close-btn:hover {
-    color: #ff6699;
-  }
-
-  /* Scrollbar styling for modal */
-  .modal::-webkit-scrollbar {
-    width: 8px;
-  }
-  .modal::-webkit-scrollbar-thumb {
-    background: #ff0047;
-    border-radius: 10px;
-  }
-  .modal::-webkit-scrollbar-track {
-    background: transparent;
-  }
-</style>
+<link rel="stylesheet" href="styles.css" />
 </head>
 <body>
 
@@ -276,14 +33,14 @@
 <footer>© 2025 Vorführmodel. Powered by pure Swagger.</footer>
 
 <!-- Modal -->
-<div class="modal-overlay" id="modalOverlay">
+<div class="modal-overlay" id="modalOverlay" aria-hidden="true">
   <div class="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
-    <div class="close-btn" id="closeModalBtn" title="Schließen">&times;</div>
+    <button class="close-btn" id="closeModalBtn" aria-label="Schließen">&times;</button>
     <h2 id="modalTitle">Meine Bewerbung als Developer</h2>
     <p><strong>Name:</strong> Marlon Mustermann</p>
     <p><strong>Position:</strong> Software Developer / Webentwickler</p>
     <p><strong>Kontakt:</strong> marlon.mustermann@email.de | +49 163 3839774</p>
-    <hr style="border-color:#ff0047; margin: 1rem 0;">
+    <hr />
     <h3>Über mich</h3>
     <p>Ich bin leidenschaftlicher Entwickler mit über 5 Jahren Erfahrung in der Webentwicklung und Softwareprogrammierung. Meine Leidenschaft ist es, innovative und effiziente Lösungen zu bauen, die Benutzer begeistern und Unternehmen voranbringen.</p>
 
@@ -307,4 +64,17 @@
     <p><strong>Software Engineer | StartUp XYZ | 2018–2021</strong></p>
     <ul>
       <li>Entwicklung einer skalierbaren Webapplikation mit React und Node.js</li>
-      <li>Einführung von automatisierten Testproz
+      <li>Einführung von automatisierten Testprozessen und CI/CD-Pipelines</li>
+    </ul>
+
+    <h3>Warum ich?</h3>
+    <p>Ich bringe nicht nur technisches Know-how mit, sondern auch Kreativität, Teamgeist und den unbedingten Willen, stets das Beste zu liefern. Mit mir erhält ihr Team einen zuverlässigen und motivierten Developer, der Herausforderungen liebt und Lösungen findet.</p>
+
+    <h3>Referenzen</h3>
+    <p>Referenzen und Arbeitsproben stelle ich gerne auf Anfrage zur Verfügung.</p>
+  </div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
