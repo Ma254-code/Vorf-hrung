@@ -1,80 +1,253 @@
 <!DOCTYPE html>
 <html lang="de">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Vorführmodel - Developer Bewerbung</title>
-<link rel="stylesheet" href="styles.css" />
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Heftig und Schön</title>
+  <style>
+    /* Reset */
+    * {
+      margin: 0; padding: 0; box-sizing: border-box;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    body, html {
+      height: 100%;
+      background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+      overflow: hidden;
+      color: #00fff7;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      text-align: center;
+      user-select: none;
+    }
+
+    /* Partikel Hintergrund */
+    #particles {
+      position: fixed;
+      width: 100%;
+      height: 100%;
+      top: 0; left: 0;
+      z-index: -1;
+    }
+
+    /* Glitch Text */
+    h1 {
+      font-size: 5rem;
+      position: relative;
+      color: #00fff7;
+      animation: flicker 3s infinite alternate;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      font-weight: 900;
+    }
+    h1::before,
+    h1::after {
+      content: "HEFTIG & SCHÖN";
+      position: absolute;
+      left: 0;
+      right: 0;
+      opacity: 0.8;
+      clip-path: var(--clip);
+    }
+    h1::before {
+      animation: glitchTop 2s infinite linear;
+      color: #ff005c;
+      z-index: -1;
+      --clip: inset(0 0 70% 0);
+    }
+    h1::after {
+      animation: glitchBot 2s infinite linear;
+      color: #00ffe7;
+      z-index: -1;
+      --clip: inset(70% 0 0 0);
+    }
+
+    /* Button */
+    .btn {
+      margin-top: 2rem;
+      padding: 1.25rem 3rem;
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: #0ff;
+      background: linear-gradient(45deg, #0ff, #0af);
+      border: none;
+      border-radius: 15px;
+      box-shadow:
+        0 0 10px #0ff,
+        0 0 40px #0ff,
+        0 0 80px #00f;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      perspective: 800px;
+    }
+    .btn:hover {
+      background: linear-gradient(45deg, #ff00ff, #ff0066);
+      box-shadow:
+        0 0 15px #ff00ff,
+        0 0 50px #ff00ff,
+        0 0 100px #f0f;
+      transform: translateZ(20px) scale(1.05) rotateY(10deg);
+    }
+    .btn:active {
+      transform: translateZ(5px) scale(0.95) rotateY(0deg);
+      box-shadow:
+        0 0 5px #ff00ff;
+    }
+
+    /* Subtitle */
+    p {
+      margin-top: 1rem;
+      font-size: 1.25rem;
+      color: #aaa;
+      letter-spacing: 0.1em;
+      font-style: italic;
+      max-width: 600px;
+    }
+
+    /* Animations */
+    @keyframes flicker {
+      0%, 100% { opacity: 1; }
+      10%, 30%, 50%, 70%, 90% { opacity: 0.8; }
+      20%, 40%, 60%, 80% { opacity: 0.9; }
+    }
+
+    @keyframes glitchTop {
+      0% {
+        clip-path: inset(0 0 70% 0);
+        transform: translate(0);
+      }
+      20% {
+        clip-path: inset(0 0 55% 0);
+        transform: translate(-5px, -2px);
+      }
+      40% {
+        clip-path: inset(0 0 70% 0);
+        transform: translate(5px, 2px);
+      }
+      60% {
+        clip-path: inset(0 0 55% 0);
+        transform: translate(-5px, 0);
+      }
+      80% {
+        clip-path: inset(0 0 70% 0);
+        transform: translate(0);
+      }
+      100% {
+        clip-path: inset(0 0 70% 0);
+        transform: translate(0);
+      }
+    }
+
+    @keyframes glitchBot {
+      0% {
+        clip-path: inset(70% 0 0 0);
+        transform: translate(0);
+      }
+      20% {
+        clip-path: inset(55% 0 0 0);
+        transform: translate(5px, 2px);
+      }
+      40% {
+        clip-path: inset(70% 0 0 0);
+        transform: translate(-5px, -2px);
+      }
+      60% {
+        clip-path: inset(55% 0 0 0);
+        transform: translate(5px, 0);
+      }
+      80% {
+        clip-path: inset(70% 0 0 0);
+        transform: translate(0);
+      }
+      100% {
+        clip-path: inset(70% 0 0 0);
+        transform: translate(0);
+      }
+    }
+  </style>
 </head>
 <body>
 
-<div class="container">
-  <h1>LEVEL UP</h1>
-  <p class="subtitle">Nur für die, die richtig was draufhaben 🔥</p>
+  <canvas id="particles"></canvas>
 
-  <div class="cards">
-    <div class="card">
-      <h2>🔥 Skills</h2>
-      <p>Webentwicklung, Grafikdesign, DJing, Influencer, CEO-Level</p>
-    </div>
-    <div class="card">
-      <h2>🏆 Erfolge</h2>
-      <p>1M+ Follower, 5 Awards, VIP Events, Markenbotschafter</p>
-    </div>
-    <div class="card">
-      <h2>🚀 Projekte</h2>
-      <p>Global Campaigns, Apps, Musikvideos, Social Media Explosion</p>
-    </div>
-  </div>
+  <h1>Heftig & Schön</h1>
+  <p>Diese Webseite zeigt, wie man richtig angeben kann – mit Style, Power und ein bisschen Glitch!</p>
+  <button class="btn" onclick="alert('Du hast richtig gut angegeben!')">Jetzt Angeben</button>
 
-  <button class="glow-button" id="openModalBtn">Mehr anzeigen</button>
-</div>
+  <script>
+    // Partikel-Animation im Hintergrund
+    const canvas = document.getElementById('particles');
+    const ctx = canvas.getContext('2d');
+    let width, height;
+    let particlesArray;
 
-<footer>© 2025 Vorführmodel. Powered by pure Swagger.</footer>
+    function init() {
+      resize();
+      particlesArray = [];
+      for (let i = 0; i < 120; i++) {
+        particlesArray.push(new Particle());
+      }
+      animate();
+    }
 
-<!-- Modal -->
-<div class="modal-overlay" id="modalOverlay" aria-hidden="true">
-  <div class="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
-    <button class="close-btn" id="closeModalBtn" aria-label="Schließen">&times;</button>
-    <h2 id="modalTitle">Meine Bewerbung als Developer</h2>
-    <p><strong>Name:</strong> Marlon Mustermann</p>
-    <p><strong>Position:</strong> Software Developer / Webentwickler</p>
-    <p><strong>Kontakt:</strong> marlon.mustermann@email.de | +49 163 3839774</p>
-    <hr />
-    <h3>Über mich</h3>
-    <p>Ich bin leidenschaftlicher Entwickler mit über 5 Jahren Erfahrung in der Webentwicklung und Softwareprogrammierung. Meine Leidenschaft ist es, innovative und effiziente Lösungen zu bauen, die Benutzer begeistern und Unternehmen voranbringen.</p>
+    function resize() {
+      width = window.innerWidth;
+      height = window.innerHeight;
+      canvas.width = width;
+      canvas.height = height;
+    }
 
-    <h3>Technische Fähigkeiten</h3>
-    <ul>
-      <li>JavaScript, TypeScript, HTML5, CSS3 (inkl. moderne Frameworks wie React, Vue.js)</li>
-      <li>Backend mit Node.js, Express, Python, PHP</li>
-      <li>Datenbanken: MySQL, MongoDB, PostgreSQL</li>
-      <li>Versionierung mit Git & GitHub</li>
-      <li>CI/CD, Docker, Testing (Jest, Mocha)</li>
-    </ul>
+    window.addEventListener('resize', () => {
+      resize();
+      particlesArray = [];
+      for (let i = 0; i < 120; i++) {
+        particlesArray.push(new Particle());
+      }
+    });
 
-    <h3>Berufserfahrung</h3>
-    <p><strong>Senior Web Developer | TechCompany GmbH | 2021–2024</strong></p>
-    <ul>
-      <li>Leitung von Frontend-Projekten und Optimierung der User Experience</li>
-      <li>Implementierung von Microservices und API-Integration</li>
-      <li>Teamkoordination und Code-Reviews</li>
-    </ul>
+    class Particle {
+      constructor() {
+        this.x = Math.random() * width;
+        this.y = Math.random() * height;
+        this.size = Math.random() * 2 + 1;
+        this.speedX = (Math.random() - 0.5) * 0.5;
+        this.speedY = (Math.random() - 0.5) * 0.5;
+        this.color = `rgba(0,255,255,${Math.random()})`;
+      }
+      update() {
+        this.x += this.speedX;
+        this.y += this.speedY;
 
-    <p><strong>Software Engineer | StartUp XYZ | 2018–2021</strong></p>
-    <ul>
-      <li>Entwicklung einer skalierbaren Webapplikation mit React und Node.js</li>
-      <li>Einführung von automatisierten Testprozessen und CI/CD-Pipelines</li>
-    </ul>
+        if (this.x > width) this.x = 0;
+        else if (this.x < 0) this.x = width;
 
-    <h3>Warum ich?</h3>
-    <p>Ich bringe nicht nur technisches Know-how mit, sondern auch Kreativität, Teamgeist und den unbedingten Willen, stets das Beste zu liefern. Mit mir erhält ihr Team einen zuverlässigen und motivierten Developer, der Herausforderungen liebt und Lösungen findet.</p>
+        if (this.y > height) this.y = 0;
+        else if (this.y < 0) this.y = height;
+      }
+      draw() {
+        ctx.beginPath();
+        ctx.fillStyle = this.color;
+        ctx.shadowColor = '#0ff';
+        ctx.shadowBlur = 10;
+        ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+        ctx.fill();
+      }
+    }
 
-    <h3>Referenzen</h3>
-    <p>Referenzen und Arbeitsproben stelle ich gerne auf Anfrage zur Verfügung.</p>
-  </div>
-</div>
+    function animate() {
+      ctx.clearRect(0, 0, width, height);
+      particlesArray.forEach(p => {
+        p.update();
+        p.draw();
+      });
+      requestAnimationFrame(animate);
+    }
 
-<script src="script.js"></script>
+    init();
+  </script>
+
 </body>
 </html>
